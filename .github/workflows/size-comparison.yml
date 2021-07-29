@@ -15,7 +15,7 @@
         - name: Compute size
           id: compute_size
           run: |
-            ls ::set-output name=size:: -lah README.md | awk -F " " {'print $5'}
+            echo "SIZE=$(ls -lah target/debug/min-sized/rust | awk -F " " {'print $5'})" >> $GITHUB_ENV
         - name: Create Size Badge
           uses: schneegans/dynamic-badges-action@v1.1.0
           with:
@@ -23,7 +23,7 @@
             gistID: 3a7cd3ae806ec27a74c3743c5d5a462d
             filename: stable.json
             label: Stable
-            message: ${{steps.vars.outputs.size}}
+            message: ${{env.SIZE}}
             color: orange
 
 
