@@ -17,13 +17,27 @@
           with:
             command: build
             args: --release
-        - uses: ./.github/actions/get-size-badge
+        - name: Compute size
+          id: compute_size
+          run: |
+            echo "SIZE=$(ls -lah ./target/debug/min-sized-rust | awk -F " " {'print $5'})" >> $GITHUB_ENV
+        - name: Create Stable Size Badge
+          uses: schneegans/dynamic-badges-action@v1.1.0
           with:
-            path: ./target/debug/min-sized-rust
-            badge-filename: stable-debug.json
-            auth: ${{secrets.GIST_SECRET}}
-        - uses: ./.github/actions/get-size-badge
+            auth: ${{ secrets.GIST_SECRET }}
+            gistID: 3a7cd3ae806ec27a74c3743c5d5a462d
+            filename: ./target/debug/min-sized-rust
+            message: ${{env.SIZE}}
+            color: brightgreen
+        - name: Compute size
+          id: compute_size
+          run: |
+            echo "SIZE=$(ls -lah ./target/release/min-sized-rust | awk -F " " {'print $5'})" >> $GITHUB_ENV
+        - name: Create Stable Size Badge
+          uses: schneegans/dynamic-badges-action@v1.1.0
           with:
-            path: ./target/release/min-sized-rust
-            badge-filename: stable-release.json
-            auth: ${{secrets.GIST_SECRET}}
+            auth: ${{ secrets.GIST_SECRET }}
+            gistID: 3a7cd3ae806ec27a74c3743c5d5a462d
+            filename: ./target/release/min-sized-rust
+            message: ${{env.SIZE}}
+            color: brightgreen
