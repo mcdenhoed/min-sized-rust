@@ -15,7 +15,7 @@
         - name: Compute size
           id: compute_size
           run: |
-            echo "SIZE=$(ls -lah target/debug/min-sized/rust | awk -F " " {'print $5'})" >> $GITHUB_ENV
+            echo "SIZE=$(ls -lah target/debug/min-sized-rust | awk -F " " {'print $5'})" >> $GITHUB_ENV
         - name: Create Size Badge
           uses: schneegans/dynamic-badges-action@v1.1.0
           with:
