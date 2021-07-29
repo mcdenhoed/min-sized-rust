@@ -17,7 +17,7 @@
           with:
             command: build
             args: --release
-        - name: Compute size
+        - name: Compute Stable Debug size
           id: compute_size
           run: |
             echo "SIZE=$(ls -lah ./target/debug/min-sized-rust | awk -F " " {'print $5'})" >> $GITHUB_ENV
@@ -29,7 +29,7 @@
             filename: ./target/debug/min-sized-rust
             message: ${{env.SIZE}}
             color: brightgreen
-        - name: Compute size
+        - name: Compute Stable Release size
           id: compute_size
           run: |
             echo "SIZE=$(ls -lah ./target/release/min-sized-rust | awk -F " " {'print $5'})" >> $GITHUB_ENV
