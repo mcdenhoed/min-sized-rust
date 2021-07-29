@@ -25,7 +25,7 @@
           with:
             auth: ${{ secrets.GIST_SECRET }}
             gistID: 3a7cd3ae806ec27a74c3743c5d5a462d
-            filename: ./target/debug/min-sized-rust
+            filename: stable-debug.json
             message: ${{env.SIZE}}
             color: brightgreen
         - name: Compute Stable Release size
@@ -36,6 +36,6 @@
           with:
             auth: ${{ secrets.GIST_SECRET }}
             gistID: 3a7cd3ae806ec27a74c3743c5d5a462d
-            filename: ./target/release/min-sized-rust
+            filename: stable-release.json
             message: ${{env.SIZE}}
             color: brightgreen
