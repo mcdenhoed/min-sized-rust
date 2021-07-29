@@ -21,7 +21,7 @@
           with:
             path: ./target/debug/min-sized-rust
             badge-filename: stable-debug.json
-        - uses: mcdenhoed/min-sized-rust/get-size-badge@v1
+        - uses: ./.github/actions/get-size-badge
           with:
             path: ./target/release/min-sized-rust
             badge-filename: stable-release.json
