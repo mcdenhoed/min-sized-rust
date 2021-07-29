@@ -1,0 +1,20 @@
+inputs:
+  path:
+    description: 'Path of the built executable'
+  badge-filename:
+    description: 'Name of the file in the gist for storing the badge data'
+runs:
+  using: "composite"
+  steps:
+    - name: Compute size
+      id: compute_size
+      run: |
+        echo "SIZE=$(ls -lah ${{inputs.path}} | awk -F " " {'print $5'})" >> $GITHUB_ENV
+    - name: Create Size Badge
+      uses: schneegans/dynamic-badges-action@v1.1.0
+      with:
+        auth: ${{ secrets.GIST_SECRET }}
+        gistID: 3a7cd3ae806ec27a74c3743c5d5a462d
+        filename: ${{inputs.badge-filename}}
+        message: ${{env.SIZE}}
+        color: brightgreen
