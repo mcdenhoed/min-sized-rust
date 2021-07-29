@@ -18,7 +18,6 @@
             command: build
             args: --release
         - name: Compute Stable Debug size
-          id: compute_size
           run: |
             echo "SIZE=$(ls -lah ./target/debug/min-sized-rust | awk -F " " {'print $5'})" >> $GITHUB_ENV
         - name: Create Stable Size Badge
@@ -30,7 +29,6 @@
             message: ${{env.SIZE}}
             color: brightgreen
         - name: Compute Stable Release size
-          id: compute_size
           run: |
             echo "SIZE=$(ls -lah ./target/release/min-sized-rust | awk -F " " {'print $5'})" >> $GITHUB_ENV
         - name: Create Stable Size Badge
