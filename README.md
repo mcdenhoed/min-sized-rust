@@ -2,7 +2,7 @@
 
 | Build Status |                                                                                |
 |--------------|--------------------------------------------------------------------------------|
-| Travis       | [![Travis Build Status][travis-build-status-svg]][travis-build-status]         |
+| Travis       | ![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/mcdenhoed/3a7cd3ae806ec27a74c3743c5d5a462d/raw/stable.json)        |
 
 This repository demonstrates how to minimize the size of a Rust binary.
 
